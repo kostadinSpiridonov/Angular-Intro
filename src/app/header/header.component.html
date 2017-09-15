@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['']">Recipe Book</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a [routerLink]="['recipes']">Recipes</a></li>
+        <li><a [routerLink]="['shoppinglist']">Shopping List</a></li>
+        <li><a [routerLink]="['examples']">Examples</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown" rbDropdown>
+          <a class="dropdown-toggle" d role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Login</a></li>
+            <li role="separator" class="divider">Logout</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

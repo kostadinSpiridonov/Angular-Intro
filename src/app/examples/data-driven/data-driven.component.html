@@ -1,0 +1,39 @@
+<div class="row">
+  <form [formGroup]="myForm" class="col-md-5 col-md-push-1" (ngSubmit)="onSubmit()">
+    <h3>Data Driven</h3>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input class="form-control" required formControlName="username" />
+      <label *ngIf="!myForm.get('username').valid">Invalid username</label>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" formControlName="password" type="password" />
+    </div>
+
+    <div formGroupName="userData">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input class="form-control" formControlName="firstName" />
+      </div>
+      <div class="form-group">
+        <label for="secondName">Second Name</label>
+        <input class="form-control" formControlName="secondName" />
+      </div>
+    </div>
+    <div class="radio" *ngFor="let g of genders">
+      <label>
+        <input type="radio" formControlName="gender" [value]="g"/>
+        {{g}}
+      </label>
+    </div>
+    <div formArrayName="hobbies">
+      <h4>Hobbies</h4>
+      <div class="form-group" *ngFor="let hobby of myForm.get('hobbies').controls; let i = index">
+        <input type="text" class="form-control" formControlName="{{i}}" />
+      </div>
+    </div>
+    <button type="button" class="btn btn-defaul" (click)="onAddHobby()">Add hobby</button>
+    <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
