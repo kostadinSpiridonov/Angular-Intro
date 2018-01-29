@@ -20,8 +20,7 @@ export class ShopippingListAddComponent implements OnChanges {
     if (changes.item.currentValue === null) {
       this.isAdd = true;
       this.item = new Ingredient(null, null);
-    }
-    else {
+    }else {
       this.isAdd = false;
     }
   }

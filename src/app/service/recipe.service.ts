@@ -1,10 +1,10 @@
 import { Ingredient } from './../models/ingredient/ingredient';
 import { Recipe } from './../models/recipe/recipe';
 import { Injectable } from '@angular/core';
-import { HttpService } from "./http.service";
-import { Http, Response } from "@angular/http"
+import { HttpService } from './http.service';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx'
+import 'rxjs/Rx';
 
 @Injectable()
 export class RecipeService {
@@ -16,9 +16,13 @@ export class RecipeService {
 
   constructor(private httpService: HttpService) { }
 
-  public getRecipes(): Observable<Response> {
-    return this.httpService.getData("https://database-a90f2.firebaseio.com/recipes.json")
-      .map((response: Response) => response.json());
+  // public getRecipes(): Observable<Response> {
+  //   return this.httpService.getData('https://database-a90f2.firebaseio.com/recipes.json')
+  //     .map((response: Response) => response.json());
+  // }
+
+  public getRecipes(): Recipe[] {
+    return this.recipes;
   }
 
   public getRecipe(id: number) {

@@ -1,7 +1,7 @@
 import { RecipeService } from './../../service/recipe.service';
 import { Recipe } from './../../models/recipe/recipe';
 import { Component, OnInit } from '@angular/core';
-import { Response } from "@angular/http"
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'rb-recipe-list',
@@ -13,7 +13,10 @@ export class RecipeListComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.recipeService.getRecipes().subscribe(
-      (data: any) => this.recipes = data);
+    // this.recipeService.getRecipes().subscribe(
+    //   (data: any) => {
+    //   this.recipes = Array.of(data);
+    // });
+    this.recipes = this.recipeService.getRecipes();
   }
 }

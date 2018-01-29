@@ -1,7 +1,7 @@
 import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl } from '@angular/forms'
-import { HttpService } from "../service/http.service";
+import { NgForm, FormGroup, FormControl } from '@angular/forms';
+import { HttpService } from '../service/http.service';
 
 @Component({
   selector: 'rb-examples',
@@ -19,10 +19,9 @@ export class ExamplesComponent {
   genders = [
     'male',
     'female'
-  ]
+  ];
 
   constructor(private httpService: HttpService) {
-  
   }
 
   onSubmit(form: NgForm) {

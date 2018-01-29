@@ -3,8 +3,8 @@ import { ShoppingListService } from './../../service/shopping-list.service';
 import { RecipeService } from './../../service/recipe.service';
 import { Recipe } from './../../models/recipe/recipe';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
-import { Subscription } from "rxjs/Subscription";
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'rb-recipe-detail',
@@ -26,7 +26,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
       (params: any) => {
-        this.recipeIndex = params['id']
+        this.recipeIndex = params['id'];
         this.selectedRecipe = this.recipeService.getRecipe(this.recipeIndex);
       }
     );

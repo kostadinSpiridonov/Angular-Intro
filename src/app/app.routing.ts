@@ -3,7 +3,7 @@ import { ExamplesBaseComponent } from './examples/examples-base/examples-base.co
 import { RECIPE_ROUTES } from './recipe/recipe.routing';
 import { RecipesComponent } from './recipe/recipes/recipes.component';
 
-import { Routes, RouterModule } from "@angular/router"
+import { Routes, RouterModule } from '@angular/router';
 
 const APP_ROUTES: Routes = [
     {

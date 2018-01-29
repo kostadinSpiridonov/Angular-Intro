@@ -16,7 +16,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private recipe: Recipe;
   private recipeIndex: number;
-  private isNew: boolean = true;
+  private isNew: Boolean = true;
   public recipeForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
@@ -29,10 +29,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       (params: any) => {
         if (params.hasOwnProperty('id')) {
           this.isNew = false;
-          this.recipeIndex = +params['id']
+          this.recipeIndex = +params['id'];
           this.recipe = this.recipeService.getRecipe(this.recipeIndex);
-        }
-        else {
+        }else {
           this.isNew = true;
           this.recipe = null;
         }
@@ -46,11 +45,10 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    let newRecipe = this.recipeForm.value;
+    const newRecipe: Recipe = this.recipeForm.value;
     if (this.isNew) {
       this.recipeService.addRecipe(newRecipe);
-    }
-    else {
+    }else {
       this.recipeService.editRecipe(this.recipe, newRecipe);
     }
 
@@ -65,7 +63,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     (<FormArray>this.recipeForm.controls['ingredients']).push(
       new FormGroup({
         name: new FormControl(name, Validators.required),
-        amount: new FormControl(amount, [Validators.required, Validators.pattern("\\d+")])
+        amount: new FormControl(amount, [Validators.required, Validators.pattern('\\d+')])
       }));
   }
 
@@ -74,19 +72,19 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   private initForm(): void {
-    let recipeName: string = '';
-    let recipeContent: string = '';
-    let recipeImageUrl: string = '';
-    let recipeIngredients: FormArray = new FormArray([]);
+    let recipeName: String = '';
+    let recipeContent: String = '';
+    let recipeImageUrl: String = '';
+    const recipeIngredients: FormArray = new FormArray([]);
 
     if (!this.isNew) {
       for (let i = 0; i < this.recipe.ingredients.length; i++) {
         recipeIngredients.push(
           new FormGroup({
             name: new FormControl(this.recipe.ingredients[i].name, Validators.required),
-            amount: new FormControl(this.recipe.ingredients[i].amount, [Validators.required, Validators.pattern("\\d+")])
+            amount: new FormControl(this.recipe.ingredients[i].amount, [Validators.required, Validators.pattern('\\d+')])
           })
-        )
+        );
       }
 
       recipeName = this.recipe.name;

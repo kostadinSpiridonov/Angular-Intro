@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms'
-import { Observable } from "rxjs/RX";
+import { NgForm, FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs/RX';
 
 @Component({
   selector: 'rb-data-driven',
@@ -8,15 +8,16 @@ import { Observable } from "rxjs/RX";
   styleUrls: ['./data-driven.component.css']
 })
 export class DataDrivenComponent implements OnInit {
-  ngOnInit() {
-  }
 
   myForm: FormGroup;
 
   genders = [
     'male',
     'female'
-  ]
+  ];
+
+  ngOnInit() {
+  }
 
   constructor(formBuilder: FormBuilder) {
     //   this.myForm = new FormGroup({
@@ -68,7 +69,7 @@ export class DataDrivenComponent implements OnInit {
 
   exampleValidator(control: FormControl): { [s: string]: boolean } {
     if (control.value === 'Example') {
-      return { example: true }
+      return { example: true };
     }
     return null;
   }
@@ -79,15 +80,12 @@ export class DataDrivenComponent implements OnInit {
         setTimeout(() => {
           if (control.value === 'Example') {
             resolve({ 'invalid': true });
-          }
-          else {
+          }else {
             resolve(null);
           }
         }, 3000);
-      }
-    )
+      });
 
     return promise;
   }
-
 }
